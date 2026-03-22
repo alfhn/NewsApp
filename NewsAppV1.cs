@@ -6,7 +6,6 @@ using System.Xml.Linq;
 
 namespace NewsApp
 {
-    // Класс для хранения данных новости
     public class NewsItem
     {
         public string Title { get; set; }
@@ -22,25 +21,22 @@ namespace NewsApp
 
     class Program
     {
-        // RSS-ленты для тестирования
         private static readonly Dictionary<int, string> NewsSources = new Dictionary<int, string>
         {
             { 1, "https://lenta.ru/rss/news" },
-            { 2, "https://news.yandex.ru/index.rss" }, // Может требовать обработки
-            { 3, "https://habr.com/ru/rss/news/" },
-            { 4, "https://www.bbc.co.uk/news/rss.xml" }
+            { 2, "https://habr.com/ru/rss/news/" },
         };
 
         static async Task Main(string[] args)
         {
             Console.WriteLine("=== 📰 NewsApp v1.0 ===");
-            Console.WriteLine("Автор: [ТВОЁ ФИО]\n");
+            Console.WriteLine("Автор: Влад\n");
             
             ShowMenu();
             
             while (true)
             {
-                Console.Write("\nВыберите источник (1-4) или 0 для выхода: ");
+                Console.Write("\nВыберите источник (1-2) или 0 для выхода: ");
                 var choice = Console.ReadLine();
                 
                 if (choice == "0") break;
@@ -62,9 +58,7 @@ namespace NewsApp
         {
             Console.WriteLine("Доступные источники:");
             Console.WriteLine("1. Lenta.ru");
-            Console.WriteLine("2. Yandex News");
-            Console.WriteLine("3. Habr News");
-            Console.WriteLine("4. BBC News");
+            Console.WriteLine("2. Habr News");
             Console.WriteLine("0. Выход");
         }
 
@@ -83,7 +77,7 @@ namespace NewsApp
                 Console.WriteLine($"\n✅ Загружено {news.Count} новостей:\n");
                 Console.WriteLine(new string('=', 50));
                 
-                for (int i = 0; i < news.Count && i < 10; i++) // Показываем первые 10
+                for (int i = 0; i < news.Count && i < 10; i++)
                 {
                     Console.WriteLine($"{i + 1}. {news[i]}");
                 }

@@ -86,7 +86,6 @@ namespace NewsApp
             {
                 Console.WriteLine($"❌ Ошибка загрузки: {ex.Message}");
             }
-            // В метод LoadNewsAsync добавь перед созданием HttpClient:
             var handler = new HttpClientHandler
             {
                 ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
@@ -100,7 +99,6 @@ namespace NewsApp
             var news = new List<NewsItem>();
             var doc = XDocument.Parse(rssContent);
             
-            // RSS 2.0 формат
             var items = doc.Descendants("item");
             
             foreach (var item in items)
